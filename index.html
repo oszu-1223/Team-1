@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고2 꿀팁 보드 🎓</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@300;400;700&family=Single+Day&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── 사이드 네비게이션 ── -->
+  <nav class="side-nav">
+    <ul>
+      <li><a href="#" class="nav-link active" data-filter="all">전체 팁</a></li>
+      <li><a href="#" class="nav-link" data-filter="newest">최신순</a></li>
+      <li><a href="#" class="nav-link" data-filter="popular">인기순</a></li>
+      <li><a href="#" class="nav-link" data-filter="mine">내 팁</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── 헤더 검색바 ── -->
+  <header class="top-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="꿀팁 검색..." />
+    </div>
+  </header>
+
+  <!-- ── 메인 보드 ── -->
+  <main class="board">
+
+    <!-- 좌: 기숙사 생활 -->
+    <section class="board-half dorm-side" id="dormSection">
+      <div class="section-header">
+        <div class="section-icon">🏠</div>
+        <h2 class="section-title">기숙사 생활</h2>
+      </div>
+      <div class="clothesline-row" id="dormRow1">
+        <div class="rope"></div>
+        <div class="cards-on-rope" id="dormCards1"></div>
+      </div>
+      <div class="clothesline-row" id="dormRow2">
+        <div class="rope"></div>
+        <div class="cards-on-rope" id="dormCards2"></div>
+      </div>
+    </section>
+
+    <!-- 우: 학교 생활 -->
+    <section class="board-half campus-side" id="campusSection">
+      <div class="section-header">
+        <div class="section-icon">🏫</div>
+        <h2 class="section-title">학교 생활</h2>
+      </div>
+      <div class="clothesline-row" id="campusRow1">
+        <div class="rope"></div>
+        <div class="cards-on-rope" id="campusCards1"></div>
+      </div>
+      <div class="clothesline-row" id="campusRow2">
+        <div class="rope"></div>
+        <div class="cards-on-rope" id="campusCards2"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── 팁 추가 버튼 ── -->
+  <button class="fab-btn" id="openFormBtn">
+    <span class="fab-icon">📌</span>
+    <span class="fab-text">ADD YOUR TIP</span>
+  </button>
+
+  <!-- ── 팁 추가 폼 팝업 ── -->
+  <div class="modal-overlay" id="formModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeFormBtn">✕</button>
+      <div class="modal-illustration">
+        <div class="illust-figure">🧑‍🎓</div>
+        <div class="illust-arrow">→</div>
+        <div class="illust-photo">📷</div>
+      </div>
+      <h3 class="modal-title">나만의 꿀팁 공유하기</h3>
+
+      <div class="form-group">
+        <label>카테고리</label>
+        <div class="category-buttons">
+          <button class="cat-btn active" data-cat="dorm">🏠 기숙사</button>
+          <button class="cat-btn" data-cat="campus">🏫 학교</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tipTitle">제목</label>
+        <input type="text" id="tipTitle" placeholder="꿀팁 제목을 입력하세요" maxlength="30" />
+      </div>
+
+      <div class="form-group">
+        <label for="tipDesc">내용</label>
+        <textarea id="tipDesc" placeholder="꿀팁 내용을 자세히 적어주세요..." rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>이미지 업로드</label>
+        <div class="image-upload-area" id="imageUploadArea">
+          <input type="file" id="imageFile" accept="image/*" hidden />
+          <div class="upload-placeholder" id="uploadPlaceholder">
+            <span>🖼️</span>
+            <p>클릭하여 사진 추가</p>
+          </div>
+          <img id="imagePreview" class="image-preview hidden" alt="미리보기" />
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitTipBtn">📌 게시판에 붙이기!</button>
+    </div>
+  </div>
+
+  <!-- ── 카드 상세 팝업 ── -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="detail-box polaroid-detail">
+      <button class="modal-close" id="closeDetailBtn">✕</button>
+      <div class="detail-photo-wrap">
+        <img id="detailImage" src="" alt="" />
+        <div class="detail-no-image hidden" id="detailNoImage">📷</div>
+      </div>
+      <div class="detail-body">
+        <div class="detail-meta">
+          <span class="detail-cat" id="detailCat"></span>
+          <span class="detail-likes" id="detailLikes">❤️ 0</span>
+        </div>
+        <h3 class="detail-title" id="detailTitle"></h3>
+        <p class="detail-desc" id="detailDesc"></p>
+        <div class="detail-actions">
+          <button class="like-btn" id="detailLikeBtn">❤️ 좋아요</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
